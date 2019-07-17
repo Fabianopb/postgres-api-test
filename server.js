@@ -1,6 +1,6 @@
 const express = require('express');
 const Sequelize = require('sequelize');
-const quotesRouter = require('./controllers/quotes');
+const quotesController = require('./controllers/quotes');
 const db = require('./models');
 
 (async () => {
@@ -13,6 +13,9 @@ const db = require('./models');
 })();
 
 const app = express();
+
+const quotesRouter = express.Router();
+quotesRouter.get("/", quotesController.findAll);
 
 app.use("/api/quotes", quotesRouter);
 
