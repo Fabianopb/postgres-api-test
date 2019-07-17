@@ -1,25 +1,26 @@
 const express = require('express');
-const app = express();
 const Sequelize = require('sequelize');
-const PORT = process.env.PORT || 3000;
+const quotesRouter = require('./controllers/quotes');
+const db = require('./models');
 
-const sequelize = new Sequelize('pg_api_test_development', 'fabiano.brito', 'pgapitest', {
-  host: 'localhost',
-  dialect: 'postgres'
-});
-sequelize
-  .authenticate()
-  .then(() => {
+(async () => {
+  try {
+    await db.sequelize.authenticate();
     console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
+  } catch (error) {
     console.error('Unable to connect to the database:', err);
-  });
+  }
+})();
+
+const app = express();
+
+app.use("/api/quotes", quotesRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`App is up and running. Listening on port ${PORT}`);
 });
