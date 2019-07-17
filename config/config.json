@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "fabiano.brito",
+    "password": "pgapitest",
+    "database": "pg_api_test_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "fabiano.brito",
+    "password": "pgapitest",
+    "database": "pg_api_test_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "fabiano.brito",
+    "password": "pgapitest",
+    "database": "pg_api_test_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
